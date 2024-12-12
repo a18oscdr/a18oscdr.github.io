@@ -1,0 +1,173 @@
+:root {
+    --primary-color: #daa520; /* Golden accent for OSRS theme */
+    --secondary-color: #ff4500; /* Reddish color for incorrect answers */
+    --background-color: #2b2b2b; /* Dark slate background */
+    --text-color: #f4f4f4; /* Light text for contrast */
+}
+
+@font-face {
+    font-family: 'RuneScapeUF'; /* Name of the font */
+    src: url('https://oscardrabik.com/higher-lower/runescape_bold.ttf') format('truetype'); /* Path to your font file */
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'RuneScapeUF', Arial, sans-serif; /* Fallback fonts */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+h1 {
+    
+    color: var(--primary-color);
+    font-size: 3rem;
+    text-shadow: 4px 3px #000;
+    text-align: center;
+}
+p {
+    text-align: center;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px #000;
+}
+
+#score-container {
+    margin: 20px;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.game-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centers content vertically */
+    width: 90%;
+    max-width: 800px;
+    gap: 20px; /* Adds space between items */
+}
+
+.item {
+
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center-align text and images */
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #1c1c1c;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 200px; /* Limit item width */
+}
+
+.item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--primary-color);
+}
+
+/* Animations */
+.item img {
+    width: 200px; /* Set consistent image width */
+    height: 200px; /* Set consistent image height */
+    
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fadeIn 0.5s ease forwards;
+}
+.item p span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+} 
+
+button {
+    display: none; /* Hide the button initially */
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #000;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin:auto;
+    font-family: 'RuneScapeUF', Arial, sans-serif;
+    text-shadow: 1px 1px #000;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+#result {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+
+
+
+.hidden {
+    display: none;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease forwards;
+    pointer-events: none; /* Prevent further clicks */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes fadeOut {
+    to {
+        opacity: 0.5; /* Dim the container */
+    }
+}
+
+/* Feedback Animations */
+.correct {
+    animation: correctFlash 0.5s ease forwards;
+}
+
+.incorrect {
+    animation: incorrectFlash 0.5s ease forwards;
+}
+
+@keyframes correctFlash {
+    0% { background-color: transparent; }
+    50% { background-color: rgba(0, 255, 0, 0.3); }
+    100% { background-color: transparent; }
+}
+
+@keyframes incorrectFlash {
+    0% { background-color: transparent; }
+    50% { background-color: rgba(255, 0, 0, 0.3); }
+    100% { background-color: transparent; }
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    .item img{
+        width: 130px; /* Set consistent image width */
+        height: 130px;
+    }
+}
